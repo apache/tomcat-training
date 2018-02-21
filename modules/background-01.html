@@ -14,7 +14,90 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<section>Background 01</section>
-<section>Slide 1</section>
-<section>Slide 2</section>
-
+<section>
+  <h2>Installation</h2>
+</section>
+<section>
+  <h3>Dependencies</h3>
+  <p>Java Runtime</p>
+  <p>Full JDK not required</p>
+  <p>Tomcat 9 requires Java 8 or later</p>
+  <p>Tomcat 8 requires Java 7 or later</p>
+  <p>Tomcat 7 requires Java 6 or later</p>
+  <p>Tomcat Native for OpenSSL support</p>
+  <aside class="notes">
+    Very old versions of Tomcat (10+ years ago) required the JDK for JSPs. All current versions of
+    Tomcat include the Eclipse compilers.
+    <br>
+    off-by-one pattern broken by Java's switch sto a 6-monthly release cycle.
+    <br>
+    Tomcat 9 and 8.5 require Java 9 for pure Java HTTP/2 support
+    <br>
+    Tomcat 7 requires Java 7 for JSR 356
+  </aside>
+</section>
+<section>
+  <h3>Installation options</h3>
+  <p>Unpack an archive</p>
+  <p>Tomcat Installer for Windows</p>
+  <p>Package from Linux distribution</p>
+  <p>Build from source</p>
+  <aside class="notes">
+    Various services provide packaged Tomcat instances. Not going to cover those.
+  </aside>
+</section>
+<section>
+  <h3>Installing from an archive</h3>
+  <p>.zip for Windows</p>
+  <p>.tar.gz for Linux, OSX etc</p>
+  <p>Contents is largely the same</p>
+  <p>Line endings vary</p>
+  <p>Tomcat Native binary for Windows is included in .zip</p>
+</section>
+<section>
+  <h3>Demonstration</h3>
+  <p>Installing from an archive</p>
+  <p>Windows</p>
+  <p>Linux</p>
+</section>
+<section>
+  <h3>Exercise</h3>
+  <p>Install from an archive</p>
+  <p>Display Tomcat home page in browser</p>
+</section>
+<section>
+  <h3>File structure</h3>
+</section>
+<section>
+  <h3>Running as a Service</h3>
+  <p>Windows</p>
+  <p>Runs as LocalService by default - TODO Check</p>
+</section>
+<section>
+  <h3>Running as a Daemon</h3>
+  <p>TODO commons daemon</p>
+</section>
+<section>
+  <h3>Tomcat Installer for Windows</h3>
+  <p>Unpacks archive</p>
+  <p>Creates a service</p>
+  <p>Automates the manual steps</p>
+  <p>Provides a GUI to set some basic options</p>
+  <aside class="notes">
+    Original target was setting up developers, not production systems.
+  </aside>
+</section>
+<section>
+  <h3>Demonstration</h3>
+  <p>Installing with the Tomcat Installer for Windows</p>
+</section>
+<section>
+  <h3>Demonstration</h3>
+  <p>Installing from a Linux package</p>
+</section>
+<section>
+  <h3>Exercise</h3>
+  <p>Install from the Installer for Windows</p>
+  <p>or</p>
+  <p>Install from a Linux package</p>
+</section>
