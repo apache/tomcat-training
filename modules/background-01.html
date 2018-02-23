@@ -29,7 +29,7 @@
     Very old versions of Tomcat (10+ years ago) required the JDK for JSPs. All current versions of
     Tomcat include the Eclipse compilers.
     <br>
-    off-by-one pattern broken by Java's switch sto a 6-monthly release cycle.
+    off-by-one pattern broken by Java's switch to a 6-monthly release cycle.
     <br>
     Tomcat 9 and 8.5 require Java 9 for pure Java HTTP/2 support
     <br>
@@ -67,6 +67,125 @@
 </section>
 <section>
   <h3>File structure</h3>
+  <p>bin/</p>
+  <ul>
+    <li>Start-up scripts</li>
+    <li>Utility scripts</li>
+    <li>Bootstrap classes</li>
+    <li>setenv.sh / setenv.bat</li>
+    <li>JAVA_OPTS vs CATALINA_OPTS</li>
+  </ul>
+  <aside class="notes">
+    Utility scripts include creating digests, install Windows service and a configuration check
+  </aside>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/server.xml</p>
+  <p>Main configuration file</p>
+  <p>TODO - diagram of architecture</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/web.xml</p>
+  <p>Global defaults for all web applications</p>
+  <p>Syntax defined by Servlet specification</p>
+  <p>Defines Default and JSP servlets</p>
+  <p>Can be over-ridden by web application</p> 
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/context.xml</p>
+  <p>Global defaults for all web applications</p>
+  <p>Tomcat specific</p>
+  <p>Can be over-ridden by web application</p> 
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/Catalina/localhost/*.xml</p>
+  <p>conf/&lt;engine-name&gt;/&lt;host-name&gt;/*.xml
+  <p>Web-application specific configuration</p>
+  <p>Always over-rides context.xml in the web application</p>
+  <p>Name sets context path</p> 
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/logging.properties</p>
+  <p>Logging configuration</p>
+  <p>Based on java.util.logging</p>
+  <p>Extended to be class loader aware</p>
+  <aside class="notes">
+    Explain issue of loggers with same name in different web applications
+  </aside>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/tomcat-users.xml</p>
+  <p>Configures users for default Realm</p>
+  <p>Only read at Tomcat start</p>
+  <p>XML schema file provided</p>
+  <aside class="notes">
+    Not ideal choice for production. Can use it with JMX.
+  </aside>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/jaspic-providers.xml</p>
+  <p>Java Authentication Service Provider Interface for Containers</p>
+  <p>Plug-in authentication modules</p>
+  <p>Google OAuth most likely use</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/catalina.properties</p>
+  <p>Sets system properties</p>
+  <p>Various Tomcat configuration options set at JVM level</p>
+  <p>Often used to change default globally but value can still be changed per web application</p>
+  <aside class="notes">
+    Prefer not to configure at JVM level if at all possible. 
+  </aside>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>conf/catalina.policy</p>
+  <p>Used when running under a security manager</p>
+  <p>Only lightly tested</p>
+  <p>Few web applications work under a security manager out of the box</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>lib/</p>
+  <p>JAR files required by Tomcat</p>
+  <p>JARs added here will be visible to all web applications</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>logs/</p>
+  <p>Roll over daily except catalina.out</p>
+  <p>catalina.out - redirected console output</p>
+  <p>catalina.log - root logger (copied to console)</p>
+  <p>localhost_access_log - access log for default host</p>
+  <p>localhost.log - host log</p>
+  <p>manager.log, host-manager.log - web application log</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>temp/</p>
+  <p>Temporary file location used by the JVM</p>
+  <p>java.io.tmpdir</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>webapps/</p>
+  <p>Location of web applications</p>
+  <p>WARs or directories</p>
+  <p>Deployed automatically by default</p>
+</section>
+<section>
+  <h3>File structure</h3>
+  <p>work/</p>
+  <p>JSP compilation</p>
+  <p>Session serialization</p>
 </section>
 <section>
   <h3>Running as a Service</h3>
@@ -90,6 +209,18 @@
 <section>
   <h3>Demonstration</h3>
   <p>Installing with the Tomcat Installer for Windows</p>
+</section>
+<section>
+  <h3>Where did the files go?</h3>
+  <p>Linux distributions have 'views' on file locations</p>
+  <p>Tomcat files not all in one location</p>
+  <p>Often use multiple packages</p>
+  <p>E.g.: <a href="https://packages.ubuntu.com/xenial/tomcat8">Ubuntu 16.04 LTS</a> and Tomcat
+     8.0.x</p>
+  <p>Tend to pick a version and then back-port fixes</p>
+  <aside class="notes">
+    Follow the Ubuntu link (if connectivity allows) and have a look around.
+  </aside>
 </section>
 <section>
   <h3>Demonstration</h3>
