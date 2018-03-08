@@ -193,11 +193,24 @@
 <section>
   <h3>Running as a Service</h3>
   <p>Windows</p>
-  <p>Runs as LocalService by default - TODO Check</p>
+  <p>Runs as Local System by default</p>
+  <p>Consider using 'NT AUTHORITY\LocalService'</p>
+  <p>(no password)</p>
+  <p>See also <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55969">Bug 55969</a></p>
+  <aside class="notes">
+    Patches welcome. Windows installer is easy to build.
+  </aside>
 </section>
 <section>
   <h3>Running as a Daemon</h3>
-  <p>TODO commons daemon</p>
+  <p>You'll need build-essential</p>
+  <p>Expand in place, build and copy jsvc to bin</p>
+  <p>Copy daemon.sh to /etc/init.d/tomcat</p>
+  <aside class="notes">
+    netstat -nap with ps
+    <br/>
+    Demonstrate starting on port 80
+  </aside>
 </section>
 <section>
   <h3>Tomcat Installer for Windows</h3>
@@ -228,6 +241,9 @@
 <section>
   <h3>Demonstration</h3>
   <p>Installing from a Linux package</p>
+  <aside class="notes">
+    Look at the default index page. Create a context.
+  </aside>
 </section>
 <section>
   <h3>Exercise</h3>
