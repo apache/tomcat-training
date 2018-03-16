@@ -53,8 +53,8 @@
 </section>
 <section>
   <h3>Context Paths</h3>
-  <p>The context path is always derived from the WAR, DIR (or context.xml).</p>
-  <p>Priority order is context.xml, WAR then DIR</p>
+  <p>The context path is always derived from the WAR, DIR or context.xml</p>
+  <p>Any Servlet 4 defined preference in web.xml is ignored</p>
 </section>
 <section>
   <h3>Context Paths</h3>
@@ -89,15 +89,16 @@
   <h3>Automatic deployment</h3>
   <p>Default Host appBase is $CATALINA_BASE/webapps</p>
   <p>Directories and WARs placed here are deployed at start-up by default</p>
-  <p>Root of WAR or directory for a Context is called the docBase</p> 
+  <p>WAR or directory for a Context is called the docBase</p> 
   <p>deployOnStartUp, autoDeploy, unpackWARs</p>
 </section>
 <section>
   <h3>Deployment Descriptors</h3>
   <p>context.xml files</p>
   <p>/META-INF/context.xml
-  <p>$CATALINA_BASE/engine-name/host-name/base-name.xml</p>
-  <p>$CATALINA_BASE/Catalina/localhost/manager.xml</p>
+  <p>$CATALINA_BASE/conf/engine-name/host-name/base-name.xml</p>
+  <p>$CATALINA_BASE/conf/Catalina/localhost/manager.xml</p>
+  <p>$CATALINA_BASE/conf/engine-name/host-name/ is known as xmlBase</p>
 </section>
 <section>
   <h3>Deployment Descriptors</h3>
@@ -108,9 +109,9 @@
 </section>
 <section>
   <h3>Automatic deployment</h3>
-  <p>1st Deployment descriptors</p>
-  <p>2nd WAR</p>
-  <p>3rd Directory</p>
+  <p>1st Deployment descriptors in xmlBase</p>
+  <p>2nd WARs in appBase</p>
+  <p>3rd Directories in appBase</p>
 </section>
 <section>
   <h3>Automatic deployment</h3>
@@ -129,7 +130,7 @@
 <section>
   <h3>Changes while shutdown</h3>
   <p>Most will take effect on start-up</p>
-  <p>Updated WAR used to be ignored</p>
+  <p>Updated WAR with unpacked DIR used to be ignored</p>
   <p>/META-INF/war-tracker as of 8.0.21</p> 
 </section>
 <section>
