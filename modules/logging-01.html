@@ -14,7 +14,149 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<section>Logging 01</section>
-<section>Slide 1</section>
-<section>Slide 2</section>
-
+<section>
+  <h2>Logging</h2>
+</section>
+<section>
+  <h3>Inspiration</h3>
+  <blockquote>
+    &ldquo;Explain to an experienced sysadmin who knows nothing about Tomcat or Java (but a lot
+    about system utilities etc) how to set up a coherent and easy-to-manage logging system for
+    Tomcat (and applications therein), including (safe) log rotation, archiving, cleanup
+    etc.&rdquo;<br/>
+    André Warnier
+  </blockquote>
+</section>
+<section>
+  <h3>Types of logs</h3>
+  <p>Access logs</p>
+  <p>Tomcat logs</p>
+  <p>Application logs</p>
+</section>
+<section>
+  <h3>Logging Frameworks</h3>
+  <p>There are lots</p>
+  <p>There are even frameworks for the frameworks</p>
+  <aside class="notes">
+    log4j, log4j2, logBack, SLF4J<br/>
+    Commons Logging
+  </aside>
+</section>
+<section>
+  <h3>java.util.logging</h3>
+  <p>JRE came a little late to the party</p>
+  <p>Similar to log4j</p>
+  <aside class="notes">
+    There are all fairly similar
+  </aside>
+</section>
+<section>
+  <h3>java.util.logging</h3>
+  <p>Loggers are in a hierarchy</p>
+  <p><code>org</code></p>
+  <p><code>org.apache</code></p>
+  <p><code>org.apache.tomcat</code></p>
+  <p>Typically follows Java package hierarchy</p>
+  <p>Logger names typically match class names</p>
+  <p>Don't have to</p>
+</section>
+<section>
+  <h3>java.util.logging</h3>
+  <p>Set levels at any point in the hierarchy</p>
+  <p>Add handlers at any point in the hierarchy</p>
+  <p>Option to pass log message up hierarchy</p>
+</section>
+<section>
+  <h3>java.util.logging</h3>
+  <p>Is not class loader aware</p>
+  <p>Configuration file only allows one instance of a Handler type</p>
+  <aside class="notes">
+    Class unique ID is name + class loader. Multiple web apps could have same class with same
+    logger. Need to be able to separate log messages.
+  </aside>
+</section>
+<section>
+  <h3>JULI</h3>
+  <p>Java Util Logging Implementation</p>
+  <p>Commons logging hard-coded to use java.util.logging</p>
+  <p>Class loader aware</p>
+  <p>Allows multiple handlers of same type</p>
+</section>
+<section>
+  <h3>Tomcat logging</h3>
+  <p>A closer look at Tomcat's default <code>logging.properties</code></p>
+  <aside class="notes">
+    Note the separate Container hierarchy under ContainerBase
+  </aside>
+</section>
+<section>
+  <h3>Production changes</h3>
+  <p>Remove the ConsoleHandler</p>
+  <p>Nothing should output to STDOUT or STDERR during normal operations</p>
+  <p>catalina.YYYY-MM-DD.log should be mostly empty</p>
+  <p>Deployment and undeployment may trigger some logging</p> 
+</section>
+<section>
+  <h3>Application logging</h3>
+  <p>Servlet API provides very basic logging</p>
+  <p><code>log(String)</code></p>
+  <p><code>log(String, Throwable)</code></p>
+  <p>Not sufficiently flexible for most use cases</p>
+</section>
+<section>
+  <h3>Application logging</h3>
+  <p>Could use anything</p>
+  <p>Direct to stdout</p>
+  <p>Servlet API</p>
+  <p>Logging framework routed to files</p>
+  <p>Logging framework routed to <code>stdout</code></p>
+  <p><code>java.util.logging</code></p>
+</section>
+<section>
+  <h3>Frameworks</h3>
+  <p>Configure to files outside of docBase</p>
+  <p>Configure to redirect to <code>java.util.logging</code> then configure via JULI</p>
+  <aside class="notes">
+    Could configure to STDOUT then capture but seems overly complex
+  </aside>
+</section>
+<section>
+  <h3>Servlet API</h3>
+  <p>Passed to Container's logger</p>
+  <p><code>log(String)</code> at <code>INFO</code></p>
+  <p><code>log(String, Throwable)</code> at <code>ERROR</code></p>
+  <p>Configure via JULI</p>
+  <aside class="notes">
+    Could configure to STDOUT then capture but seems overly complex
+  </aside>
+</section>
+<section>
+  <h3><code>stdout</code></h3>
+  <p>Or <code>stderr</code></p>
+  <p>Time for a training course</p>
+  <p><code>swallowOutput</code> on <code>Context</code></p>
+  <p>All output for one request gets redirected to a single <code>INFO</code> log messages</p>
+</section>
+<section>
+  <h3>Access logs</h3>
+  <p>Logs every request</p>
+  <p>Separate from logging framework</p>
+  <p>Optimised for performance</p>
+  <aside class="notes">
+    We considered using JULI. When we tested it, the performance impact was too great.
+  </aside>
+</section>
+<section>
+  <h3>Access logs</h3>
+  <p>rotation: <code>rotatable</code>, <code>fileDateFormat</code>, <code>renameOnRotate</code></p>
+  <p>archiving: no support</p>
+  <p>clean-up: <code>maxDays</code></p>
+  <aside class="notes">
+    maxDays is a recent addition prompted by this class<br/>
+    archive via cron? probably combine with clean-up
+  </aside>
+</section>
+<section>
+  <h3>Demonstration</h3>
+  <p>JSP that outputs to <code>stdout</code></p>
+</section>
