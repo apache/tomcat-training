@@ -138,6 +138,15 @@
   <p>All output for one request gets redirected to a single <code>INFO</code> log messages</p>
 </section>
 <section>
+  <h3>JULI</h3>
+  <p>rotation: <code>rotatable</code> (daily rotation)</p>
+  <p>archiving: no support</p>
+  <p>clean-up: <code>maxDays</code></p>
+  <aside class="notes">
+    archive via cron? probably combine with clean-up
+  </aside>
+</section>
+<section>
   <h3>Access logs</h3>
   <p>Logs every request</p>
   <p>Separate from logging framework</p>
@@ -153,7 +162,7 @@
   <p>clean-up: <code>maxDays</code></p>
   <aside class="notes">
     maxDays is a recent addition prompted by this class<br/>
-    archive via cron? probably combine with clean-up
+    rotation not limited to daily
   </aside>
 </section>
 <section>
