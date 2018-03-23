@@ -101,3 +101,52 @@
   <p>Manual validation against root CA's web site</p>
   <img src="../images/tls-01/diagram-08.svg" style="border: none; box-shadow:none;"/>
 </section>
+<section>
+  <h3>TLS Handshake: Starting point</h3>
+  <img src="../images/tls-01/diagram-09.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client:</p>
+  <ul style="display: block">
+    <li>CA certificates</li>
+    <li>supported algorithms</li>
+  </ul>
+  <p style="text-align: left">Server:</p>
+  <ul style="display: block">
+    <li>Certificate</li>
+    <li>Private key</li>
+    <li>supported algorithms</li>
+  </ul> 
+</section>
+<section>
+  <h3>TLS Handshake: Step 1: ClientHello</h3>
+  <img src="../images/tls-01/diagram-10.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client generates random number</p>
+  <p style="text-align: left">Client sends message to server</p>
+  <ul style="display: block">
+    <li>supported algorithms</li>
+    <li>random number</li>
+  </ul> 
+</section>
+<section>
+  <h3>TLS Handshake: Step 2: ServerHello</h3>
+  <img src="../images/tls-01/diagram-11.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Server generates random number</p>
+  <p style="text-align: left">Server compares algorithms</p>
+  <ul style="display: block">
+    <li>selects algorithms</li>
+  </ul> 
+  <p style="text-align: left">Server sends message to client</p>
+  <ul style="display: block">
+    <li>selected algorithms</li>
+    <li>random number</li>
+  </ul> 
+</section>
+<section>
+  <h3>TLS Handshake: Step 3: Certificate</h3>
+  <img src="../images/tls-01/diagram-12.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Server sends message to client</p>
+  <ul style="display: block">
+    <li>Server certificate</li>
+  </ul> 
+  <p style="text-align: left">Client validates certificate</p>
+
+</section>

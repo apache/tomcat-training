@@ -103,7 +103,7 @@
        <path fill="none" stroke="rgb(52,101,164)" d="M 10300,13804 L 10378,13403 C 10453,13461 10450,13428 10601,13403 L 10300,13804 Z"/>
        <path fill="none" stroke="rgb(52,101,164)" d="M 8200,10603 L 8200,10603 Z"/>
        <path fill="none" stroke="rgb(52,101,164)" d="M 10601,13804 L 10601,13804 Z"/>
-       <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="706px" font-weight="400"><tspan class="TextPosition" x="8929" y="11868"><tspan fill="rgb(0,0,0)" stroke="none">My</tspan></tspan><tspan class="TextPosition" x="8635" y="12655"><tspan fill="rgb(0,0,0)" stroke="none">Cert.</tspan></tspan></tspan></text>
+       <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="706px" font-weight="400"><tspan class="TextPosition" x="8910" y="11868"><tspan fill="rgb(0,0,0)" stroke="none">CA</tspan></tspan><tspan class="TextPosition" x="8635" y="12655"><tspan fill="rgb(0,0,0)" stroke="none">Cert.</tspan></tspan></tspan></text>
       </g>
      </g>
      <g class="com.sun.star.drawing.CustomShape">
@@ -127,7 +127,7 @@
        <path fill="none" stroke="rgb(52,101,164)" d="M 16300,13804 L 16378,13403 C 16453,13461 16450,13428 16601,13403 L 16300,13804 Z"/>
        <path fill="none" stroke="rgb(52,101,164)" d="M 14200,10603 L 14200,10603 Z"/>
        <path fill="none" stroke="rgb(52,101,164)" d="M 16601,13804 L 16601,13804 Z"/>
-       <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="706px" font-weight="400"><tspan class="TextPosition" x="14929" y="11868"><tspan fill="rgb(0,0,0)" stroke="none">My</tspan></tspan><tspan class="TextPosition" x="14635" y="12655"><tspan fill="rgb(0,0,0)" stroke="none">Cert.</tspan></tspan></tspan></text>
+       <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="706px" font-weight="400"><tspan class="TextPosition" x="14910" y="11868"><tspan fill="rgb(0,0,0)" stroke="none">CA</tspan></tspan><tspan class="TextPosition" x="14635" y="12655"><tspan fill="rgb(0,0,0)" stroke="none">Cert.</tspan></tspan></tspan></text>
       </g>
      </g>
      <g class="com.sun.star.drawing.CustomShape">
