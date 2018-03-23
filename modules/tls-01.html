@@ -79,3 +79,25 @@
   <p/>
   <p>Who owns the private key?</p>
 </section>
+<section>
+  <h3>Certificates</h3>
+  <p>Associates a public key with an identity</p>
+  <img src="../images/tls-01/diagram-07.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Certificates</h3>
+  <p>CA is Certificate Authority</p>
+  <p>Need to link CA's public key to CA's identity</p>
+  <p>Use another certificate</p>
+  <p>Result is a chain of certificates</p>
+  <p>Chain ends with a root certificate authority</p>
+  <p>There are multiple root CAs</p>
+</section>
+<section>
+  <h3>Root Certificates</h3>
+  <p>Self-signed</p>
+  <p>Alternative trust path required</p>
+  <p>Often installed by OS</p>
+  <p>Manual validation against root CA's web site</p>
+  <img src="../images/tls-01/diagram-08.svg" style="border: none; box-shadow:none;"/>
+</section>
