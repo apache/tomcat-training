@@ -117,7 +117,7 @@
   </ul> 
 </section>
 <section>
-  <h3>TLS Handshake: Step 1: ClientHello</h3>
+  <h3 style="text-transform: none">Step 1: ClientHello</h3>
   <img src="../images/tls-01/diagram-10.svg" style="border: none; box-shadow:none; float: right"/>
   <p style="text-align: left">Client generates random number</p>
   <p style="text-align: left">Client sends message to server</p>
@@ -127,7 +127,7 @@
   </ul> 
 </section>
 <section>
-  <h3>TLS Handshake: Step 2: ServerHello</h3>
+  <h3 style="text-transform: none">Step 2: ServerHello</h3>
   <img src="../images/tls-01/diagram-11.svg" style="border: none; box-shadow:none; float: right"/>
   <p style="text-align: left">Server generates random number</p>
   <p style="text-align: left">Server compares algorithms</p>
@@ -141,12 +141,94 @@
   </ul> 
 </section>
 <section>
-  <h3>TLS Handshake: Step 3: Certificate</h3>
+  <h3 style="text-transform: none">Step 3: Certificate</h3>
   <img src="../images/tls-01/diagram-12.svg" style="border: none; box-shadow:none; float: right"/>
   <p style="text-align: left">Server sends message to client</p>
   <ul style="display: block">
     <li>Server certificate</li>
   </ul> 
   <p style="text-align: left">Client validates certificate</p>
-
+</section>
+<section>
+  <h3 style="text-transform: none">Step 6: ServerHelloDone</h3>
+  <img src="../images/tls-01/diagram-13.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Server sends message to client</p>
+  <ul style="display: block">
+    <li>No content</li>
+  </ul> 
+</section>
+<section>
+  <h3 style="text-transform: none">Step 8: ClientKeyExchange</h3>
+  <img src="../images/tls-01/diagram-14.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client generates pre-master-secret</p>
+  <p style="text-align: left">Client encrypts PMS with Server's public key</p>
+  <p style="text-align: left">Client sends message to server</p>
+  <ul style="display: block">
+    <li>Encrypted PMS</li>
+  </ul> 
+</section>
+<section>
+  <h4 style="text-transform: none">Step 10: ChangeCipherSpec</h4>
+  <img src="../images/tls-01/diagram-15.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client generates master-secret</p>
+  <ul style="display: block">
+    <li>R<sub>C</sub> + R<sub>S</sub> + PMS</li>
+  </ul> 
+  <p style="text-align: left">Client switches to encrypted mode</p>
+  <ul style="display: block">
+    <li>Algorithms agreed in step 2</li>
+    <li>Synchronous encryption with MS</li>
+  </ul> 
+  <p style="text-align: left">Client sends message to server</p>
+  <ul style="display: block">
+    <li>No content</li>
+  </ul> 
+</section>
+<section>
+  <h4 style="text-transform: none">Step 11: Finished</h4>
+  <img src="../images/tls-01/diagram-15.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client has completed handshake</p>
+  <p style="text-align: left">Client sends message to server</p>
+  <ul style="display: block">
+    <li>No content</li>
+  </ul> 
+</section>
+<section>
+  <h4 style="text-transform: none">Step 12: ChangeCipherSpec</h4>
+  <img src="../images/tls-01/diagram-16.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Client decrypts PMS</p>
+  <p style="text-align: left">Server creates MS</p>
+  <ul style="display: block">
+    <li>R<sub>C</sub> + R<sub>S</sub> + PMS</li>
+  </ul> 
+  <p style="text-align: left">Client switches to encrypted mode</p>
+  <ul style="display: block">
+    <li>Algorithms agreed in step 2</li>
+    <li>Synchronous encryption with MS</li>
+  </ul> 
+  <p style="text-align: left">Server sends message to client</p>
+  <ul style="display: block">
+    <li>No content</li>
+  </ul> 
+</section>
+<section>
+  <h4 style="text-transform: none">Step 13: Finished</h4>
+  <img src="../images/tls-01/diagram-16.svg" style="border: none; box-shadow:none; float: right"/>
+  <p style="text-align: left">Server has completed handshake</p>
+  <p style="text-align: left">Server sends message to client</p>
+  <ul style="display: block">
+    <li>No content</li>
+  </ul> 
+</section>
+<section>
+  <h4>Encryption</h4>
+  <p>Algorithms agreed in step 2</p>
+  <p>Symmetric</p>
+  <p>Master secret is shared secret key</p> 
+</section>
+<section>
+  <h4>TLS Extensions</h4>
+  <p>Client certificate authentication</p>
+  <p>Server Name Indication</p>
+  <p>Application Layer Protocol Negotiation</p> 
 </section>
