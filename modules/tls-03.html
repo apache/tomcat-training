@@ -14,7 +14,111 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<section>TLS 03</section>
-<section>Slide 1</section>
-<section>Slide 2</section>
-
+<section>
+  <h2>Configuring Tomcat for TLS</h2>
+</section>
+<section>
+  <h3>Requirements</h3>
+  <p>Private key</p>
+  <p>Server certificate</p>
+  <p>Certificate chain</p>
+  <p/>
+  <p>Configuration in server.xml
+</section>
+<section>
+  <h3>File formats</h3>
+  <p>.pem .crt .cer .key</p>
+  <p>ASCII</p>
+  <p>Key, certificate or chain</p> 
+</section>
+<section>
+  <h3>File formats</h3>
+  <p>.der</p>
+  <p>Binary form of .pem</p>
+  <p>Key, certificate or chain</p> 
+</section>
+<section>
+  <h3>File formats</h3>
+  <p>.p7b (PKCS7)</p>
+  <p>ASCII</p>
+  <p>Certificate or chain</p>
+  <p>No keys</p> 
+</section>
+<section>
+  <h3>File formats</h3>
+  <p>.p12 (PKCS12)</p>
+  <p>Binary</p>
+  <p>Key, certificate or chain</p>
+</section>
+<section>
+  <h3>File formats</h3>
+  <p>.jks .keystore</p>
+  <p>Binary</p>
+  <p>Java specific (deprecated)</p>
+  <p>Key, certificate or chain</p>
+</section>
+<section>
+  <h3>Which format?</h3>
+  <p>Tomcat 7.0.x or 8.0.x</p>
+  <p>BIO, NIO or NIO2</p>
+  <p>JSSE implementation, JSSE configuration</p>
+  <p>Keystore</p>
+  <p>PKCS12 with Java 7+</p>
+  <aside class="notes">
+    OpenSSL doesn't seem to like creating PKCS12 files without keys. Keytool will do so happily. 
+  </aside>
+</section>
+<section>
+  <h3>Which format?</h3>
+  <p>Tomcat 7.0.x or 8.0.x</p>
+  <p>APR/Native</p>
+  <p>OpenSSL implementation, OpenSSL configuration</p>
+  <p>PEM</p>
+</section>
+<section>
+  <h3>Which format?</h3>
+  <p>Tomcat 8.5.x or 9.0.x</p>
+  <p>NIO or NIO2</p>
+  <p>JSSE or OpenSSL implementation</p>
+  <p>JSSE or OpnSSL configuration (can't mix)</p>
+  <p>Keystore, PKCS12 (JSSE config)</p>
+  <p>PEM (OpenSSL config)</p>
+  <aside class="notes">
+    Netty: NIO + OpenSSLs 
+  </aside>
+</section>
+<section>
+  <h3>Which format?</h3>
+  <p>Tomcat 8.5.x or 9.0.x</p>
+  <p>APR/Native</p>
+  <p>OpenSSL implementation, OpenSSL configuration</p>
+  <p>PEM</p>
+</section>
+<section>
+  <h3>Changes in 8.5.x onwards</h3>
+  <p>Was 1 connector, 1 host name, 1 certificate</p>
+  <p>Now each connector can have multiple host names</p>
+  <p>Each host name can have multiple certificates</p>
+  <p>Change in configuration style</p>
+  <p>Old style is supported but deprecated</p>
+</section>
+<section>
+  <h3>Generating keys and certificates</h3>
+  <p>OpenSSL for Linux - package manager</p>
+  <p>OpenSSL for Windows - Tomcat Native binary</p>
+  <p>Keytool - JRE/JDK</p>
+  <p>openssl.cnf - <a href="https://raw.githubusercontent.com/openssl/openssl/OpenSSL_1_0_2-stable/apps/openssl.cnf">Github</a></p>
+  <p><a href="http://home.apache.org/~markt/presentations/2016-01-25-TLS-key-certificate-generation/script.txt">script</a></p> 
+  <aside class="notes">
+    Go through the script 
+  </aside>
+</section>
+<section>
+  <h3>Demonstration</h3>
+</section>
+<section>
+  <h3>Exercise</h3>
+  <p>Create APR/native key and certificate</p>
+  <p>Create keystore key and certificate</p>
+  <p>Show 8.5.x, NIO working with both in turn</p>
+</section>

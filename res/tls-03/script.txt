@@ -1,0 +1,72 @@
+These instructions are for Windows
+Modify the paths as approptiate for your OS.
+
+Create a CA
+===========
+
+1. Create the directory structure
+
+   mkdir demoCA
+   mkdir demoCA\newcerts demoCA\private demoCA\csr demoCA\keystores
+   echo 1000 > demoCA\serial
+   echo 2>demoCA\index.txt
+   
+2. Create the CA
+   openssl req -config openssl.cnf -new -x509 -days 3650 -extensions v3_ca -keyout demoCA\private\cakey.pem -out demoCA\cacert.pem
+
+Create an APR/native key and certificate for localhost
+======================================================
+   
+1. Create the private key and the certificate signing request
+   openssl req -config openssl.cnf -new -nodes -out demoCA\csr\localhost-req.pem -keyout demoCA\private\localhost-key.pem
+
+2. Sign the certifcate
+   openssl ca -config openssl.cnf -days 730 -out demoCA\newcerts\localhost-cert.pem -infiles demoCA\csr\localhost-req.pem
+
+3. Create the certificate chain file
+   Just the CA certificate
+
+4. Install key, certificate and chain files
+   <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
+              maxThreads="150" SSLEnabled="true" >
+       <SSLHostConfig>
+           <Certificate certificateKeyFile="conf/localhost-key.pem"
+                        certificateFile="conf/localhost-cert.pem"
+                        certificateChainFile="conf/localhost-chain.pem"
+                        type="RSA" />
+       </SSLHostConfig>
+   </Connector>
+
+Create a Java Keystore for localhost
+====================================
+
+1. Ensure keytool is on the path
+   set JAVA_HOME=C:\java\jdk1.8.0_72_x64
+   set PATH=%PATH%;%JAVA_HOME%\bin
+
+2. Create the private key
+   keytool -genkey -alias tomcat -keyalg RSA -keystore demoCA\keystores\localhost2.jks -dname CN=localhost,OU=B,O=ASF,ST=MD,C=US
+   
+3. Create the certificate signing request
+   keytool -certreq -keyalg RSA -alias tomcat -file demoCA\csr\localhost2-req.pem -keystore demoCA\keystores\localhost2.jks
+   
+4. Sign the certificate
+   openssl ca -config openssl.cnf -days 730 -out demoCA\newcerts\localhost2-cert.pem -infiles demoCA\csr\localhost2-req.pem
+   Java uses PRINTABLESTRING. OpenSSL expects UTF8STRING.
+   openssl ca -policy policy_anything -config openssl.cnf -days 730 -out demoCA\newcerts\localhost2-cert.pem -infiles demoCA\csr\localhost2-req.pem
+
+5. Import the certificate chain
+   keytool -import -alias ca -keystore demoCA\keystores\localhost2.jks -trustcacerts -file demoCA\cacert.pem
+   
+6. Import the signed certificate
+   keytool -import -alias tomcat -keystore demoCA\keystores\localhost2.jks -file demoCA\newcerts\localhost2-cert.pem
+   
+7. Install keystore
+   <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+              maxThreads="150" SSLEnabled="true">
+       <SSLHostConfig>
+           <Certificate certificateKeystoreFile="conf/localhost2.jks"
+                        type="RSA" />
+       </SSLHostConfig>
+   </Connector>
+
