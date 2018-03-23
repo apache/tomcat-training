@@ -1,3 +1,4 @@
 node_modules
 .project
 *.min.js
+.~lock*
