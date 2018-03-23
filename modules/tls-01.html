@@ -14,7 +14,68 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<section>TLS 01</section>
-<section>Slide 1</section>
-<section>Slide 2</section>
-
+<section>
+  <h2>Introduction to TLS</h2>
+</section>
+<section>
+  <h3>Why?</h3>
+  <p>Lots of questions about TLS on the mailing lists</p>
+  <p>It is clear many folks don’t understand how TLS works</p>
+  <p>Debugging something you don’t understand is hard</p>
+  <p>Should use TLS not SSL</p>
+  <p>I’ll probably use them interchangeably<br/>(as do the Tomcat docs)</p>
+</section>
+<section>
+  <h3>Cryptography Basics</h3>
+</section>
+<section>
+  <h3>Symmetric Encryption</h3>
+  <p>Use the same secret key to encrypt and decrypt</p>
+  <img src="../images/tls-01/diagram-01.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Asymmetric Encryption</h3>
+  <p>Pair of keys, A and B</p>
+  <p>A and B are mathematically related</p>
+  <p>Very hard to derive one from the other</p> 
+  <p>Encrypt with A, decrypt with B</p>
+  <p>Encrypt with B, decrypt with A</p>
+  <p>Make one key public</p>
+  <p>Keep one key private</p>
+</section>
+<section>
+  <h3>Asymmetric Encryption</h3>
+  <p>Encrypt with public key, decrypt with private key</p>
+  <img src="../images/tls-01/diagram-02.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Asymmetric Encryption</h3>
+  <p>Encrypt with private key, decrypt with public key</p>
+  <img src="../images/tls-01/diagram-03.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Hash Functions</h3>
+  <p>Generate a fingerprint (hash) for a given input</p>
+  <p>Small change in input gives a large change in the hash</p>
+  <p>Very difficult to generate an input for a given hash</p>
+  <img src="../images/tls-01/diagram-04.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Digital Signatures</h3>
+  <p>Proves a document was sent by a given entity</p>
+  <img src="../images/tls-01/diagram-05.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Digital Signatures</h3>
+  <p>Validation</p>
+  <img src="../images/tls-01/diagram-06.svg" style="border: none; box-shadow:none;"/>
+</section>
+<section>
+  <h3>Digital Signatures</h3>
+  <p>If the hashes match...</p>
+  <p>...then the public key decrypted the digital signature...</p>
+  <p>...so the private key created the digital signature...</p>
+  <p>...so the owner of the private key signed the document</p>
+  <p/>
+  <p>Who owns the private key?</p>
+</section>
