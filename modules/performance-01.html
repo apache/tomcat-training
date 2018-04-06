@@ -14,7 +14,117 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<section>Perfomance 01</section>
-<section>Slide 1</section>
-<section>Slide 2</section>
-
+<section>
+  <h2>Performance</h2>
+</section>
+<section>
+  <h3>Where to look</h3>
+  <p>Tomcat's typical per request overhead is ~50µs</p>
+  <p>It probably isn't Tomcat</p>
+  <p>It probably is your application</p>
+  <p>Use a profiler</p>
+</section>
+<section>
+  <h3>Memory Usage</h3>
+  <p>Java Object Heap</p>
+  <p>PermGen / Metaspace</p>
+  <p>Native memory</p>
+  <aside class="notes">
+    If you get and OOME, check the message carefully.
+  </aside>
+</section>
+<section>
+  <h3>Java Object Heap</h3>
+  <p>Stores the object you create</p>
+  <p>Control size with Xms and Xmx</p>
+  <p>Garbage collection clean up unused objects</p>
+</section>
+<section>
+  <h3>Class storage</h3>
+  <p>PermGen: Java 7 and earlier</p>
+  <p>Stores classes</p>
+  <p>Control size with XX:PermSize and XX:MaxPermSize</p>
+  <p>Always has a limit</p>
+  <p>OOME when it is full</p>
+</section>
+<section>
+  <h3>Class storage</h3>
+  <p>Metaspace: Java 8 and later</p> 
+  <p>Stores classes</p>
+  <p>Control size with XX:MaxMetaspaceSize</p>
+  <p>Unlimted by default</p>
+  <p>Uses as much memory as the OS will give it</p>
+</section>
+<section>
+  <h3>Native memory</h3>
+  <p>Code generation</p>
+  <p>Socket buffers</p>
+  <p>File descriptors</p>
+  <p>Thread stacks</p>
+  <p>Direct memory space</p>
+  <p>JNI code</p>
+  <p>JNI allocated memory</p>
+  <p>Garbage collection</p>
+  <aside class="notes">
+    If the Java process heap expands into swap, performance will suffer
+    significantly. 
+  </aside>
+</section>
+<section>
+  <h3>Garbage Collection</h3>
+  <p>Generally, JVM defaults are fine</p>
+  <p>Tuning GC should normally be one of the last things you do</p>
+</section>
+<section>
+  <h3>Garbage Collection</h3>
+  <p>Overview</p>
+  <p>Start from GC roots and identify all live objects</p>
+  <p>Remove everything else</p>
+  <p>Compact the live objects</p>
+  <p>GC time is proportional to live object size
+</section>
+<section>
+  <h3>GC tuning</h3>
+  <p>Java object heap size</p>
+  <p>Throughput</p>
+  <p>Pause time</p>
+  <p>Optimise for any 2 at the expense of the third</p>
+  <p>Set max Java object heap size to 3x to 5x steady state requirement</p> 
+</section>
+<section>
+  <h3>Thread dumps</h3>
+  <p>Displays the state of all threads in a virtual machine</p>
+  <p>Provides plenty of information about activity and any dead locks</p>
+  <p>Provides a trace where each thread started to where its current point
+     in execution</p>
+</section>
+<section>
+  <h3>Thread dumps</h3>
+  <p>Always take at least 3, ~5s apart</p>
+  <p>Using diff between them can be enlightening</p>
+  <p>Unix: <code>kill -3 &lt;pid&gt;</code></p>
+  <p>Windows: <code>Ctrl + Break</code></p>
+  <p>Windows: Service Runner control panel</p>
+  <p><code>jstack</code></p>
+</section>
+<section>
+  <h3>CPU usage</h3>
+  <p><code>nid</code> is the OS thread ID</p>
+  <p>List threads using more than 0.0% CPU</p>
+  <p><code>ps -eL -o pid,%cpu,lwp | grep -i `ps -ef | grep -v grep | grep java | awk '{print $2}'` | grep -v ' 0.0'</code></p>
+</section>
+<section>
+  <h3>Tuning</h3>
+  <p>Agree performance targets</p>
+  <p>Measure (use a profiler)</p>
+  <p>Identify bottleneck</p>
+  <p>Fix root cause</p>
+  <p>Repeat until target is reached</p>
+  <aside class="notes">
+    Identifying the correct root cause is the hard bit.
+  </aside> 
+</section>
+<section>
+  <h3>Demonstration</h3>
+  <p>JSP causing CPU usage</p>
+</section>
