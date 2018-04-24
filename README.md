@@ -23,4 +23,4 @@ This repository hosts the community developed Apache Tomcat training material.
    ```
 1. View the material on <http://localhost:8000>
 
-Edits made to the source files should be visiblein yoru browser shortly after saving.
+Edits made to the source files should be visible in your browser shortly after saving.
