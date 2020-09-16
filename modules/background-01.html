@@ -33,7 +33,7 @@
     <br>
     Tomcat 9 and 8.5 require Java 9 for pure Java HTTP/2 support
     <br>
-    Tomcat 7 requires Java 7 for JSR 356
+    Tomcat 7 requires Java 7 for Java WebSocket support
   </aside>
 </section>
 <section>
@@ -125,10 +125,13 @@
   <h3>File structure</h3>
   <p>conf/tomcat-users.xml</p>
   <p>Configures users for default Realm</p>
-  <p>Only read at Tomcat start</p>
+  <p>Monitored for updates by default</p>
+  <p></p>
   <p>XML schema file provided</p>
   <aside class="notes">
     Not ideal choice for production. Can use it with JMX.
+    <br/>
+    Used to be only read at Tomcat start
   </aside>
 </section>
 <section>
@@ -193,12 +196,11 @@
 <section>
   <h3>Running as a Service</h3>
   <p>Windows</p>
-  <p>Runs as Local System by default</p>
-  <p>Consider using 'NT AUTHORITY\LocalService'</p>
+  <p>Runs as Local Service by default</p>
   <p>(no password)</p>
-  <p>See also <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=55969">Bug 55969</a></p>
   <aside class="notes">
     Patches welcome. Windows installer is easy to build.
+    Used to be Local System
   </aside>
 </section>
 <section>
