@@ -1,0 +1,167 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<section>
+  <h3>Agenda</h3>
+  <p>Jakarta EE 11</p>
+  <p>Jakarta Servlet</p>
+  <p>Jakarta Pages</p>
+  <p>Jakarta WebSocket</p>
+  <p>Jakarta Expression Language</p>
+  <p>Jakarta Authentication</p>
+  <p>Jakarta Annotations</p>
+  <p>Tomcat specific changes</p>
+</section>
+<section>
+  <h3>Jakarta EE 11</h3>
+  <p>42 individual specifications - Tomcat implements 6</p>
+  <p>Platform specification - Tomcat implements relevant sections</p>
+  <p>Minimum of Java 21</p>
+  <p>No SecurityManager support</p>
+  <p>Testing and Compatibility Kits (TCKs) are being refactored</p>
+  <p>First milestones due end of November</p>
+  <p>Final release June/July 2024</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - 6.1</h3>
+  <p>No major changes</p>
+  <p>Clarification</p>
+  <p>Clean-up</p>
+  <p>Various improvements</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Headers</h3>
+  <p>Calls using null for a header name will be NO-OPs</p>
+  <p>Using null when setting a header value will remove all current values</p>
+  <p>Calls using null when adding a header value will be NO-OPs</p>
+  <p>The empty string is a valid value for a header</p>
+  <p>Any method that sets a header is a NO-OP once the response is committed</p>
+  <p>Align getDateHeader() and getIntHeader() with getHeader() for multiple values</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Async</h3>
+  <p>dispatch() and complete() close non-blocking output streams</p>
+  <p>write(), print(), println() and flush() are "write operations"</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Redirects</h3>
+  <p>Status code can be specified</p>
+  <p>Response body can be specified</p>
+  <p>Relative redirects are allowed</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Security</h3>
+  <p>Clarify that all ServletContext methods that accept a path bypass security constraints</p>
+  <p>Remove sensitive HTTP headers from TRACE responses</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Parameters</h3>
+  <p>Invalid parameters will always trigger an Exception</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Miscellaneous I</h3>
+  <p>Update HTTP RFC references to latest versions</p>
+  <p>HTTPS support is now mandatory</p>
+  <p>New constants for status codes 308, 421, 422 and 426</p>
+  <p>New request attribute jakarta.servlet.error.query_string</p>
+  <p>Add ByteBuffer support to ServletInputStream and ServletOutputStream</p>
+  <p>Charset support for setCharacterEncoding()</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - Miscellaneous II</h3>
+  <p>Context root mapping occurs with or without the trailing '/'</p>
+  <p>Clarify when leading '/' is ommitted in HttpServletMapping.getMatchValue()</p>
+  <p>Clarify multi-part config sizes are in bytes</p>
+  <p>Clarify expected behaviour for CONNECT requests</p>
+  <p>Deprecate and make optional support for HTTP/2 server push</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - In Progress</h3>
+  <p>HttpSession access for WebSocket</p>
+  <p>Require error dispatches to use GET</p>
+  <p>Clarify behaviour of various methods for include / forward</p>
+  <p>Support for 1xx responses - particularly early hints</p>
+</section>
+<section>
+  <h3>Jakarta Pages - 4.0</h3>
+  <p>Depreacted classes and methods have been removed</p>
+  <p>Updated ErrorData to support the new request attribute jakarta.servlet.error.query_string
+</section>
+<section>
+  <h3>Jakarta WebSocket - 2.2</h3>
+  <p>Clarifed the responsibility for sending Ping messages</p>
+  <p>Added getSession() method to SendResult</p>
+</section>
+<section>
+  <h3>Expression Language - 6.0</h3>
+  <p>Remove all deprecated classes and methods</p>
+  <p>Dependency on JavaBeans API is now optional</p>
+  <p>Added support for java.util.Optional via OptionalELResolver</p>
+</section>
+<section>
+  <h3>Annotations - 3.0?</h3>
+  <p>ManagedBean is deprecated</p>
+</section>
+<section>
+  <h3>Jakarta Authentication - 3.1?</h3>
+  <p>TBD</p>
+</section>
+<section>
+  <h3>Tomcat 11</h3>
+  <p>No major changes</p>
+  <p>Specification / RFC updates</p>
+  <p>Generally stricter with invalid input</p>
+  <p>Enhancements and improvements</p>
+  <p>32-bit Windows no longer supported (no JRE)</p>
+</section>
+<section>
+  <h3>Tomcat 11 - Security I</h3>
+  <p>BASIC authentication uses UTF-8 by default</p>
+  <p>Update DIGEST auth to RFC 7616</p>
+  <p>Documentation web application is only accessible from localhost by default</p>
+  <p>Examples web application is only accessible from localhost by default</p>
+</section>
+<section>
+  <h3>Tomcat 11 - Security II</h3>
+  <p>rejectIllegalHeader hard-coded to true</p>
+  <p>allowHostHeaderMismatch hard-coded to false</p>
+  <p>Align AJP connector handling of invalid HTTP headers with HTTP connector</p>
+  <p>Added RateLimitFilter</p>
+</section>
+<section>
+  <h3>HTTP/2</h3>
+  <p>RFC 9218 - HTTP/2 priority frame support</p>
+  <p>Support for server push has been removed</p>
+</section>
+<section>
+  <h3>Virtual threads</h3>
+  <p>Virtual thread support - useVirtualThreads on the Connector</p>
+  <p>Some internal refactoring</p>
+</section>
+<section>
+  <h3>TLS</h3>
+  <p>Log TLS cert info on startup</p>
+  <p>Dedicated loggers for detailed TLS confguration info</p>
+  <p>Added TLSCertificateReloadListener</p>
+</section>
+<section>
+  <h3>Miscellaneaous</h3>
+  <p>Expose the utility executor to web applications</p>
+  <p>Tomcat no longer sets java.protocol.handler.pkgs when starting</p>
+  <p>Added PropertiesRoleMappingListener</p>
+  <p>Added ContextNamingInfoListener</p>
+  <p>Add support for loading configuration resources from the web application</p>
+</section>
