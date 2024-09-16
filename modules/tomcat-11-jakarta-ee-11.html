@@ -1,0 +1,86 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<section>
+  <h3>Agenda</h3>
+  <p>Jakarta EE 11</p>
+  <p>Tomcat 11</p>
+</section>
+<section>
+  <h3>Jakarta EE 11 - Overview</h3>
+  <p>Major Tomcat versions are aligned with Servlet specification releases<p>
+  <p>Originally planned for Q1 2024</p>
+  <p>Testing and Compatibility Kits (TCKs) refactoring taking longer than expected</p>
+  <p>Slipped to H1 2024 then H2 2024</p>
+</section>
+<section>
+  <h3>Jakarta EE 11 - Progress</h3>
+  <p>42 individual specifications - Tomcat implements 6</p>
+  <p>Those 6 are done</p>
+  <p>Tomcat 11 implements all </p>
+  <p>Tomcat 11 passes the TCK for 5 of 6</p>
+  <p>Authentication TCK uses different framework - work in progress</p>
+</section>
+<section>
+  <h3>Jakarta EE 11 - Key changes</h3>
+  <p>Requires a minimum of Java 17</p>
+  <p>No SecurityManager support</p>
+</section>
+<section>
+  <h3>Jakarta Servlet - 6.1</h3>
+  <p>Safe HTTP session access for WebSocket</p>
+  <p>Invalid request parameters will always trigger an exception</p>
+  <p>HTTP/2 server push is deprecated
+  <p>Lots of clarifications</p>
+</section>
+<section>
+  <h3>Jakarta Pages - 4.0</h3>
+  <p>Depreacted classes and methods have been removed</p>
+  <p>Updated ErrorData to support the new request attribute jakarta.servlet.error.query_string
+</section>
+<section>
+  <h3>Jakarta WebSocket - 2.2</h3>
+  <p>Clarifed the responsibility for sending Ping messages</p>
+  <p>Added getSession() method to SendResult</p>
+</section>
+<section>
+  <h3>Expression Language - 6.0</h3>
+  <p>Remove all deprecated classes and methods</p>
+  <p>Dependency on JavaBeans API is now optional</p>
+  <p>Added support for java.util.Optional via OptionalELResolver</p>
+</section>
+<section>
+  <h3>Tomcat 11</h3>
+  <p>Specification / RFC updates</p>
+  <p>RFC 9218 - HTTP/2 priority frame support</p>
+  <p>Generally stricter with invalid input</p>
+  <p>32-bit Windows no longer supported</p>
+  <p>Added virtual thread support</p>
+  <p>Added TLSCertificateReloadListener</p>
+</section>
+<section>
+  <h3>Tomcat 11</h3>
+  <p>First stable release will be on Wednesday</p>
+  <p>25th anniversary of first Tomcat commit at the ASF</p>
+  <p>Join us for cake</p>
+</section>
+<section>
+  <h3>Tomcat 11</h3>
+  <p>Major versions are supported for ~10 years</p>
+  <p>Regular monthly release cycle</p>
+  <p>Stable APIs with backwards compatibility a priority</p>
+  <p>All open, repeatable issues fixed for next release</p>
+</section>
