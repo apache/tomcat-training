@@ -16,54 +16,66 @@
 -->
 <section>
   <h3>Agenda</h3>
-  <p>Jakarta EE 11</p>
+  <p>Overview<p>
+  <p>Changes</p>
   <p>Tomcat 11</p>
+  <p>Questions</p>
 </section>
 <section>
-  <h3>Jakarta EE 11 - Overview</h3>
-  <p>Major Tomcat versions are aligned with Servlet specification releases<p>
-  <p>Originally planned for Q1 2024</p>
-  <p>Testing and Compatibility Kits (TCKs) refactoring taking longer than expected</p>
-  <p>Slipped to H1 2024 then H2 2024</p>
+  <h3>Overview - Versioning</h3>
+  <p>Tomcat major versions aligned with Servlet specification releases<p>
+  <p>Servlet specification releases aligned with and Jakarta EE releases</p>
+  <p>Tomcat 11 - Servlet 6.1 - Jakarta EE 11</p>
+  <p>Hope to keep Tomcat major version and Jakarta EE version aligned</p> 
 </section>
 <section>
-  <h3>Jakarta EE 11 - Progress</h3>
+  <h3>Jakarta EE 11 - Tomcat 11</h3>
   <p>42 individual specifications - Tomcat implements 6</p>
-  <p>Those 6 are done</p>
-  <p>Tomcat 11 implements all </p>
-  <p>Tomcat 11 passes the TCK for 5 of 6</p>
+  <p>Those 6 are complete and released</p>
+  <p>Tomcat 11 implements all 6</p>
+  <p>Tomcat 11 passes the TCK all 6</p>
+  <p>Daily testing against 5 TCKs</p>
   <p>Authentication TCK uses different framework - work in progress</p>
 </section>
 <section>
-  <h3>Jakarta EE 11 - Key changes</h3>
+  <h3>Overview - Timing</h3>
+  <p>Jakarta EE 10 was released Q3 2022</p>
+  <p>Originally planned for Q1 2024</p>
+  <p>Testing and Compatibility Kits (TCKs) refactoring taking longer than expected</p>
+  <p>Slipped to H1 2024 then H2 2024</p>
+  <p>Tomcat 11.0.0-M1 2022-12-05</p>
+  <p>Tomcat 11.0.0 2024-10-09</p>  
+</section>
+<section>
+  <h3>Changes - Jakarta EE 11 Platform</h3>
   <p>Requires a minimum of Java 17</p>
   <p>No SecurityManager support</p>
 </section>
 <section>
-  <h3>Jakarta Servlet - 6.1</h3>
+  <h3>Changes - Jakarta Servlet - 6.1</h3>
   <p>Safe HTTP session access for WebSocket</p>
   <p>Invalid request parameters will always trigger an exception</p>
   <p>HTTP/2 server push is deprecated
   <p>Lots of clarifications</p>
 </section>
 <section>
-  <h3>Jakarta Pages - 4.0</h3>
+  <h3>Changes - Jakarta Pages - 4.0</h3>
   <p>Depreacted classes and methods have been removed</p>
   <p>Updated ErrorData to support the new request attribute jakarta.servlet.error.query_string
 </section>
 <section>
-  <h3>Jakarta WebSocket - 2.2</h3>
+  <h3>Changes - Jakarta WebSocket - 2.2</h3>
   <p>Clarifed the responsibility for sending Ping messages</p>
   <p>Added getSession() method to SendResult</p>
 </section>
 <section>
-  <h3>Expression Language - 6.0</h3>
+  <h3>Changes - Expression Language - 6.0</h3>
   <p>Remove all deprecated classes and methods</p>
   <p>Dependency on JavaBeans API is now optional</p>
   <p>Added support for java.util.Optional via OptionalELResolver</p>
 </section>
 <section>
-  <h3>Tomcat 11</h3>
+  <h3>Changes - Tomcat 11</h3>
   <p>Specification / RFC updates</p>
   <p>RFC 9218 - HTTP/2 priority frame support</p>
   <p>Generally stricter with invalid input</p>
