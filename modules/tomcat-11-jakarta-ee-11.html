@@ -54,6 +54,21 @@
 <section>
   <h3>Changes - Jakarta Servlet - 6.1</h3>
   <p>Safe HTTP session access for WebSocket</p>
+  <pre>
+  <code data-noescape>
+public interface HttpSession {
+    ...
+    Accessor getAccessor();
+
+    interface Accessor {
+        void access(Consumer<HttpSession> sessionConsumer);
+    }
+}
+</code>
+  </pre>
+</section>
+<section>
+  <h3>Changes - Jakarta Servlet - 6.1</h3>
   <p>Invalid request parameters will always trigger an exception</p>
   <p>HTTP/2 server push is deprecated
   <p>Lots of clarifications</p>
